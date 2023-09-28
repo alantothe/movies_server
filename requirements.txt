@@ -20,6 +20,7 @@ pickleshare==0.7.5
 pipenv==2023.8.20
 platformdirs==3.10.0
 prompt-toolkit==3.0.39
+psycopg2-binary==2.9.8
 ptyprocess==0.7.0
 pure-eval==0.2.2
 Pygments @ file:///private/tmp/pygments-20230713-37641-1idig35/Pygments-2.15.1
