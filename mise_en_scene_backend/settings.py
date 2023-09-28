@@ -37,6 +37,8 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'movies',
+    'stills'
 ]
 
 MIDDLEWARE = [
@@ -76,9 +78,9 @@ WSGI_APPLICATION = 'mise_en_scene_backend.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql',
-        'NAME': 'nyc_subway',
-        'USER': 'nyc_subway_admin',
-        'PASSWORD': 'password',
+        'NAME': 'mise_en_scene',
+        'USER': 'mise_en_scene_admin',
+        'PASSWORD': 'fresh123',
         'HOST': 'localhost'
     }
 }
