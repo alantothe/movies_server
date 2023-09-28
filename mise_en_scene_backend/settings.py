@@ -75,8 +75,11 @@ WSGI_APPLICATION = 'mise_en_scene_backend.wsgi.application'
 
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': BASE_DIR / 'db.sqlite3',
+        'ENGINE': 'django.db.backends.postgresql',
+        'NAME': 'nyc_subway',
+        'USER': 'nyc_subway_admin',
+        'PASSWORD': 'password',
+        'HOST': 'localhost'
     }
 }
 
