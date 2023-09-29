@@ -2,14 +2,16 @@ from django.db import models
 
 
 class Movie(models.Model):
-    title = models.CharField()
+    imdb_id = models.CharField(max_length=20, primary_key=True)
+    title = models.CharField(max_length=255)
     date_released = models.DateField()
-    genre = models.CharField()
-    rating = models.CharField()
-    director = models.CharField()
-    country = models.CharField()
-    imdb_rating = models.FloatField()
-    imdb_id = models.CharField()
+    genre = models.JSONField()
+    rating = models.CharField(max_length=10)
+    director = models.JSONField()
+    country = models.JSONField()
+    imdb_rating = models.DecimalField(max_digits=3, decimal_places=1)
 
-    def __str__(self):
-        return self.title
+
+class Still(models.Model):
+    imdb_id = models.CharField(max_length=20)
+    image_url = models.URLField()
