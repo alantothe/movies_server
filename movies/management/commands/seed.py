@@ -37,7 +37,7 @@ class Command(BaseCommand):
 
             for image_url in stills_data:
                 still_data = {
-                    'imdb_id': imdb_id,
+                    'imdb_id': movie_instance,
                     'image_url': image_url,
                 }
                 still_instance = Still(**still_data)

@@ -5,7 +5,7 @@ backcall==0.2.0
 certifi==2023.7.22
 decorator==5.1.1
 distlib==0.3.7
-Django==4.2.4
+Django==3.2.21
 djangorestframework==3.14.0
 docutils==0.20.1
 executing==1.2.0
@@ -23,7 +23,7 @@ prompt-toolkit==3.0.39
 psycopg2-binary==2.9.8
 ptyprocess==0.7.0
 pure-eval==0.2.2
-Pygments @ file:///private/tmp/pygments-20230713-37641-1idig35/Pygments-2.15.1
+Pygments==2.15.1
 pytz==2023.3
 six==1.16.0
 sqlparse==0.4.4

@@ -77,11 +77,12 @@ WSGI_APPLICATION = 'mise_en_scene_backend.wsgi.application'
 
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.postgresql',
-        'NAME': 'mise_en_scene',
-        'USER': 'mise_en_scene_admin',
+        'ENGINE': 'django.db.backends.postgresql_psycopg2',
+        'NAME': 'initial',
+        'USER': 'postgres',
         'PASSWORD': 'fresh123',
-        'HOST': 'localhost'
+        'HOST': 'movies-psql-db.cojivbpfysem.us-west-2.rds.amazonaws.com',
+        'PORT': '5432',
     }
 }
 
