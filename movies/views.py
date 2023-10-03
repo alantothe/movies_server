@@ -27,3 +27,11 @@ class GenreViewSet(viewsets.ReadOnlyModelViewSet):
     def get_queryset(self):
         genre_name = self.kwargs['genre_name']
         return Movie.objects.filter(genre__icontains=genre_name)
+
+
+class CountryViewSet(viewsets.ReadOnlyModelViewSet):
+    serializer_class = MovieSerializer
+
+    def get_queryset(self):
+        country_name = self.kwargs['country_name']
+        return Movie.objects.filter(country__icontains=country_name)
