@@ -17,10 +17,5 @@ class DirectorViewSet(viewsets.ReadOnlyModelViewSet):
     serializer_class = MovieSerializer
 
     def get_queryset(self):
-        # director_name = self.request.query_params.get('director_name', None)
-        # if director_name is not None:
-        #     return Movie.objects.filter(director__icontains=director_name)
-        # return Movie.objects.none()
-        print(self.kwargs)  # Debugging line to print the kwargs
         director_name = self.kwargs['director_name']
         return Movie.objects.filter(director__icontains=director_name)

@@ -16,15 +16,14 @@ class Command(BaseCommand):
         with open(json_file, 'r') as file:
             data = json.load(file)
 
-        for item in data:  # Loop through the list of movie objects
+        for item in data:
             movie_data = {
                 'title': item['title'],
                 'date_released': item['date_released'][:10],
-                # Since genre is a list, you might want to join it into a string
                 'genre': ', '.join(item['genre']),
                 'rating': item['rating'],
-                'director': ', '.join(item['director']),  # Same with director
-                'country': ', '.join(item['country']),  # Same with country
+                'director': ', '.join(item['director']),
+                'country': ', '.join(item['country']),
                 'imdb_rating': item['imdb_rating'],
                 'imdb_id': item['imdb_id'],
             }
