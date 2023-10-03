@@ -14,3 +14,10 @@ class MovieSerializer(serializers.ModelSerializer):
     class Meta:
         model = Movie
         fields = [f.name for f in Movie._meta.fields] + ['stills']
+
+    def to_representation(self, instance):
+        representation = super().to_representation(instance)
+        representation['director'] = representation['director'].strip('"')
+        representation['genre'] = representation['genre'].strip('"')
+        representation['country'] = representation['country'].strip('"')
+        return representation
