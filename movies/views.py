@@ -45,6 +45,14 @@ class CountryViewSet(viewsets.ReadOnlyModelViewSet):
         return Movie.objects.filter(country__icontains=country_name)
 
 
+class YearViewSet(viewsets.ReadOnlyModelViewSet):
+    serializer_class = MovieSerializer
+
+    def get_queryset(self):
+        year_number = self.kwargs['year_number']
+        return Movie.objects.filter(date_released__year=year_number)
+
+
 class EmptyViewSet(viewsets.ReadOnlyModelViewSet):
     serializer_class = MovieSerializer
     queryset = Movie.objects.none()

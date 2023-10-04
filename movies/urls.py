@@ -2,7 +2,7 @@ from django.urls import path, re_path
 from rest_framework import routers
 from .views import MovieViewSet, StillViewSet, DirectorViewSet
 from .views import GenreViewSet, CountryViewSet, EmptyViewSet
-from .views import TitleViewSet
+from .views import TitleViewSet, YearViewSet
 
 router = routers.DefaultRouter()
 router.register('movies', MovieViewSet)
@@ -17,10 +17,16 @@ urlpatterns = [
          GenreViewSet.as_view({'get': 'list'}), name='genre-movies'),
     path('countries/<str:country_name>/',
          CountryViewSet.as_view({'get': 'list'}), name='country-movies'),
+    path('years/<str:year_number>/',
+         YearViewSet.as_view({'get': 'list'}), name='year-movies'),
+    re_path(r'^titles/$',
+            EmptyViewSet.as_view({'get': 'list'}), name='empty-title-list'),
     re_path(r'^directors/$',
             EmptyViewSet.as_view({'get': 'list'}), name='empty-director-list'),
     re_path(r'^genres/$',
             EmptyViewSet.as_view({'get': 'list'}), name='empty-genre-list'),
     re_path(r'^countries/$',
-            EmptyViewSet.as_view({'get': 'list'}), name='empty-country-list')
+            EmptyViewSet.as_view({'get': 'list'}), name='empty-country-list'),
+    re_path(r'^years/$',
+            EmptyViewSet.as_view({'get': 'list'}), name='empty-year-list')
 ]
