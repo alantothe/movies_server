@@ -2,11 +2,17 @@ from django.urls import path, re_path
 from rest_framework import routers
 from .views import MovieViewSet, StillViewSet, DirectorViewSet
 from .views import GenreViewSet, CountryViewSet, EmptyViewSet
-from .views import TitleViewSet, YearViewSet
+from .views import TitleViewSet, YearViewSet, DirectorOnlyViewSet
 
 router = routers.DefaultRouter()
 router.register('movies', MovieViewSet)
 router.register('stills', StillViewSet)
+# router.register('test', DirectorOnlyViewSet, basename='director-only')
+
+single_field_url_patterns = [
+    path('directors',
+         DirectorOnlyViewSet.as_view({'get': 'list'}), name='director-only')
+]
 
 urlpatterns = [
     path('titles/<str:title_name>/',

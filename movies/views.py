@@ -1,5 +1,6 @@
 from rest_framework import viewsets
-from .serializers import MovieSerializer, StillSerializer
+from rest_framework.response import Response
+from .serializers import MovieSerializer, StillSerializer, DirectorOnlySerializer
 from .models import Movie, Still
 
 
@@ -51,6 +52,14 @@ class YearViewSet(viewsets.ReadOnlyModelViewSet):
     def get_queryset(self):
         year_number = self.kwargs['year_number']
         return Movie.objects.filter(date_released__year=year_number)
+
+
+class DirectorOnlyViewSet(viewsets.ReadOnlyModelViewSet):
+    serializer_class = DirectorOnlySerializer
+
+    def get_queryset(self):
+        distinct_directors = Movie.objects.values('director').distinct()
+        return distinct_directors
 
 
 class EmptyViewSet(viewsets.ReadOnlyModelViewSet):

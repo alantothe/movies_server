@@ -21,3 +21,14 @@ class MovieSerializer(serializers.ModelSerializer):
         representation['genre'] = representation['genre'].strip('"')
         representation['country'] = representation['country'].strip('"')
         return representation
+
+
+class DirectorOnlySerializer(serializers.ModelSerializer):
+    class Meta:
+        model = Movie
+        fields = ['director']
+
+    def to_representation(self, instance):
+        representation = super().to_representation(instance)
+        representation['director'] = representation['director'].strip('"')
+        return representation
