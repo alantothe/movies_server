@@ -1,8 +1,9 @@
+from django.db.models.functions import ExtractYear
 from rest_framework import viewsets
-from rest_framework.response import Response
 from .serializers import MovieSerializer, StillSerializer
 from .serializers import DirectorOnlySerializer, TitleOnlySerializer
 from .serializers import GenreOnlySerializer, CountryOnlySerializer
+from .serializers import DateOnlySerializer
 from .models import Movie, Still
 
 
@@ -91,3 +92,10 @@ class CountryOnlyViewSet(viewsets.ReadOnlyModelViewSet):
     def get_queryset(self):
         distinct_countries = Movie.objects.values('country').distinct()
         return distinct_countries
+
+
+class YearOnlyViewSet(viewsets.ReadOnlyModelViewSet):
+    serializer_class = DateOnlySerializer
+
+    def get_queryset(self):
+        return Movie.objects.annotate(year=ExtractYear('date_released')).values('year').distinct()

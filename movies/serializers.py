@@ -60,3 +60,11 @@ class CountryOnlySerializer(serializers.ModelSerializer):
         representation = super().to_representation(instance)
         representation['country'] = representation['country'].strip('"')
         return representation
+
+
+class DateOnlySerializer(serializers.Serializer):
+    year = serializers.IntegerField()
+
+    class Meta:
+        model = Movie
+        fields = ['date_released']
