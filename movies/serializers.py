@@ -38,3 +38,14 @@ class TitleOnlySerializer(serializers.ModelSerializer):
     class Meta:
         model = Movie
         fields = ['title']
+
+
+class GenreOnlySerializer(serializers.ModelSerializer):
+    class Meta:
+        model = Movie
+        fields = ['genre']
+
+    def to_representation(self, instance):
+        representation = super().to_representation(instance)
+        representation['genre'] = representation['genre'].strip('"')
+        return representation

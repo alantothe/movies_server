@@ -2,6 +2,7 @@ from rest_framework import viewsets
 from rest_framework.response import Response
 from .serializers import MovieSerializer, StillSerializer
 from .serializers import DirectorOnlySerializer, TitleOnlySerializer
+from .serializers import GenreOnlySerializer
 from .models import Movie, Still
 
 
@@ -74,3 +75,11 @@ class TitleOnlyViewSet(viewsets.ReadOnlyModelViewSet):
     def get_queryset(self):
         distinct_titles = Movie.objects.values('title').distinct()
         return distinct_titles
+
+
+class GenreOnlyViewSet(viewsets.ReadOnlyModelViewSet):
+    serializer_class = GenreOnlySerializer
+
+    def get_queryset(self):
+        distinct_genres = Movie.objects.values('genre').distinct()
+        return distinct_genres
