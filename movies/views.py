@@ -35,3 +35,8 @@ class CountryViewSet(viewsets.ReadOnlyModelViewSet):
     def get_queryset(self):
         country_name = self.kwargs['country_name']
         return Movie.objects.filter(country__icontains=country_name)
+
+
+class EmptyViewSet(viewsets.ReadOnlyModelViewSet):
+    serializer_class = MovieSerializer
+    queryset = Movie.objects.none()
