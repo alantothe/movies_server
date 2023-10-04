@@ -32,3 +32,9 @@ class DirectorOnlySerializer(serializers.ModelSerializer):
         representation = super().to_representation(instance)
         representation['director'] = representation['director'].strip('"')
         return representation
+
+
+class TitleOnlySerializer(serializers.ModelSerializer):
+    class Meta:
+        model = Movie
+        fields = ['title']
