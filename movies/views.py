@@ -2,7 +2,7 @@ from rest_framework import viewsets
 from rest_framework.response import Response
 from .serializers import MovieSerializer, StillSerializer
 from .serializers import DirectorOnlySerializer, TitleOnlySerializer
-from .serializers import GenreOnlySerializer
+from .serializers import GenreOnlySerializer, CountryOnlySerializer
 from .models import Movie, Still
 
 
@@ -83,3 +83,11 @@ class GenreOnlyViewSet(viewsets.ReadOnlyModelViewSet):
     def get_queryset(self):
         distinct_genres = Movie.objects.values('genre').distinct()
         return distinct_genres
+
+
+class CountryOnlyViewSet(viewsets.ReadOnlyModelViewSet):
+    serializer_class = CountryOnlySerializer
+
+    def get_queryset(self):
+        distinct_countries = Movie.objects.values('country').distinct()
+        return distinct_countries

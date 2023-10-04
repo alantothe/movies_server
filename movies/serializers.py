@@ -49,3 +49,14 @@ class GenreOnlySerializer(serializers.ModelSerializer):
         representation = super().to_representation(instance)
         representation['genre'] = representation['genre'].strip('"')
         return representation
+
+
+class CountryOnlySerializer(serializers.ModelSerializer):
+    class Meta:
+        model = Movie
+        fields = ['country']
+
+    def to_representation(self, instance):
+        representation = super().to_representation(instance)
+        representation['country'] = representation['country'].strip('"')
+        return representation
