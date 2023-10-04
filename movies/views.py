@@ -13,6 +13,14 @@ class StillViewSet(viewsets.ReadOnlyModelViewSet):
     serializer_class = StillSerializer
 
 
+class TitleViewSet(viewsets.ReadOnlyModelViewSet):
+    serializer_class = MovieSerializer
+
+    def get_queryset(self):
+        title_name = self.kwargs['title_name']
+        return Movie.objects.filter(title__icontains=title_name)
+
+
 class DirectorViewSet(viewsets.ReadOnlyModelViewSet):
     serializer_class = MovieSerializer
 

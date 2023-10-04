@@ -2,12 +2,15 @@ from django.urls import path, re_path
 from rest_framework import routers
 from .views import MovieViewSet, StillViewSet, DirectorViewSet
 from .views import GenreViewSet, CountryViewSet, EmptyViewSet
+from .views import TitleViewSet
 
 router = routers.DefaultRouter()
 router.register('movies', MovieViewSet)
 router.register('stills', StillViewSet)
 
 urlpatterns = [
+    path('titles/<str:title_name>/',
+         TitleViewSet.as_view({'get': 'list'}), name='title-movies'),
     path('directors/<str:director_name>/',
          DirectorViewSet.as_view({'get': 'list'}), name='director-movies'),
     path('genres/<str:genre_name>/',
