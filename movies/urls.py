@@ -4,7 +4,7 @@ from .views import MovieViewSet, StillViewSet, DirectorViewSet
 from .views import GenreViewSet, CountryViewSet, EmptyViewSet
 from .views import TitleViewSet, YearViewSet, DirectorOnlyViewSet
 from .views import TitleOnlyViewSet, GenreOnlyViewSet, CountryOnlyViewSet
-from .views import YearOnlyViewSet
+from .views import YearOnlyViewSet, ImdbIdOnlyViewSet
 
 router = routers.DefaultRouter()
 router.register('movies', MovieViewSet)
@@ -20,7 +20,9 @@ single_field_url_patterns = [
     path('countries',
          CountryOnlyViewSet.as_view({'get': 'list'}), name='country-only'),
     path('years',
-         YearOnlyViewSet.as_view({'get': 'list'}), name='year-only')
+         YearOnlyViewSet.as_view({'get': 'list'}), name='year-only'),
+    path('imdb',
+         ImdbIdOnlyViewSet.as_view({'get': 'list'}), name='imdb-id-only')
 ]
 
 urlpatterns = [

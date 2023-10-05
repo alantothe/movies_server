@@ -68,3 +68,9 @@ class DateOnlySerializer(serializers.Serializer):
     class Meta:
         model = Movie
         fields = ['date_released']
+
+
+class ImdbIdOnlySerializer(serializers.ModelSerializer):
+    class Meta:
+        model = Movie
+        fields = ['imdb_id']

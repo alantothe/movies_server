@@ -3,7 +3,7 @@ from rest_framework import viewsets
 from .serializers import MovieSerializer, StillSerializer
 from .serializers import DirectorOnlySerializer, TitleOnlySerializer
 from .serializers import GenreOnlySerializer, CountryOnlySerializer
-from .serializers import DateOnlySerializer
+from .serializers import DateOnlySerializer, ImdbIdOnlySerializer
 from .models import Movie, Still
 
 
@@ -99,3 +99,8 @@ class YearOnlyViewSet(viewsets.ReadOnlyModelViewSet):
 
     def get_queryset(self):
         return Movie.objects.annotate(year=ExtractYear('date_released')).values('year').distinct()
+
+
+class ImdbIdOnlyViewSet(viewsets.ReadOnlyModelViewSet):
+    serializer_class = ImdbIdOnlySerializer
+    queryset = Movie.objects.all()
