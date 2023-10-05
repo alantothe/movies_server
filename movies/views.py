@@ -72,10 +72,7 @@ class DirectorOnlyViewSet(viewsets.ReadOnlyModelViewSet):
 
 class TitleOnlyViewSet(viewsets.ReadOnlyModelViewSet):
     serializer_class = TitleOnlySerializer
-
-    def get_queryset(self):
-        distinct_titles = Movie.objects.values('title').distinct()
-        return distinct_titles
+    queryset = Movie.objects.all()
 
 
 class GenreOnlyViewSet(viewsets.ReadOnlyModelViewSet):
