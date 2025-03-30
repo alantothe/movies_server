@@ -79,11 +79,11 @@ WSGI_APPLICATION = 'mise_en_scene_backend.wsgi.application'
 
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.postgresql_psycopg2',
-        'NAME': 'initial',
-        'USER': 'postgres',
+        'ENGINE': 'django.db.backends.postgresql',
+        'NAME': 'mise_en_scene',
+        'USER': 'mise_en_scene_admin',
         'PASSWORD': 'fresh123',
-        'HOST': 'movies-psql-db.cojivbpfysem.us-west-2.rds.amazonaws.com',
+        'HOST': 'localhost',
         'PORT': '5432',
     }
 }
@@ -118,8 +118,6 @@ TIME_ZONE = 'UTC'
 USE_I18N = True
 
 USE_TZ = True
-
-
 
 
 # Static files (CSS, JavaScript, Images)
