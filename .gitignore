@@ -3,11 +3,13 @@
 *.pyo
 __pycache__/
 
-# Virtual environment directories
+# Virtual environment
 movie_stills_env/
 
-# Django-specific files
+# SQLite database
 db.sqlite3
+
+# Django-specific files
 *.log
 
 # .env file for environment variables (don't push to GitHub)
