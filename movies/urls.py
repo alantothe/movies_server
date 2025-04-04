@@ -11,17 +11,17 @@ router.register('movies', MovieViewSet)
 router.register('stills', StillViewSet)
 
 single_field_url_patterns = [
-    path('directors',
+    path('directors/',
          DirectorOnlyViewSet.as_view({'get': 'list'}), name='director-only'),
-    path('titles',
+    path('titles/',
          TitleOnlyViewSet.as_view({'get': 'list'}), name='title-only'),
-    path('genres',
+    path('genres/',
          GenreOnlyViewSet.as_view({'get': 'list'}), name='genre-only'),
-    path('countries',
+    path('countries/',
          CountryOnlyViewSet.as_view({'get': 'list'}), name='country-only'),
-    path('years',
+    path('years/',
          YearOnlyViewSet.as_view({'get': 'list'}), name='year-only'),
-    path('imdb',
+    path('imdb/',
          ImdbIdOnlyViewSet.as_view({'get': 'list'}), name='imdb-id-only')
 ]
 
