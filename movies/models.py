@@ -1,9 +1,10 @@
 from django.db import models
-
+from django.utils.text import slugify
 
 class Movie(models.Model):
     imdb_id = models.CharField(max_length=20, primary_key=True)
     title = models.CharField(max_length=255)
+    slug = models.SlugField(max_length=255, unique=True)
     date_released = models.DateField()
     genre = models.CharField(max_length=1000)
     rating = models.CharField(max_length=10)

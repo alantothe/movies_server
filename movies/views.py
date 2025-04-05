@@ -21,8 +21,8 @@ class TitleViewSet(viewsets.ReadOnlyModelViewSet):
     serializer_class = MovieSerializer
 
     def get_queryset(self):
-        title_name = self.kwargs['title_name']
-        return Movie.objects.filter(title__icontains=title_name)
+        title_slug = self.kwargs['title_slug']
+        return Movie.objects.filter(slug=title_slug)
 
 
 class DirectorViewSet(viewsets.ReadOnlyModelViewSet):
