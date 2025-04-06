@@ -13,8 +13,8 @@ router.register('stills', StillViewSet)
 single_field_url_patterns = [
     path('directors/',
          DirectorOnlyViewSet.as_view({'get': 'list'}), name='director-only'),
-    path('titles/<slug:title_slug>/', 
-         TitleViewSet.as_view({'get': 'list'}), name='title-movies'),
+    path('titles/', 
+         TitleOnlyViewSet.as_view({'get': 'list'}), name='title-only'),
     path('genres/',
          GenreOnlyViewSet.as_view({'get': 'list'}), name='genre-only'),
     path('countries/',
