@@ -38,7 +38,7 @@ class DirectorOnlySerializer(serializers.ModelSerializer):
 class TitleOnlySerializer(serializers.ModelSerializer):
     class Meta:
         model = Movie
-        fields = ['title', 'imdb_id']
+        fields = ['title', 'imdb_id', 'slug']
 
 
 class GenreOnlySerializer(serializers.ModelSerializer):

@@ -29,7 +29,7 @@ class DirectorViewSet(viewsets.ReadOnlyModelViewSet):
     serializer_class = MovieSerializer
 
     def get_queryset(self):
-        director_name = self.kwargs['director_name']
+        director_name = self.kwargs['director_name'].replace('-', ' ')
         return Movie.objects.filter(director__icontains=director_name)
 
 
@@ -37,7 +37,7 @@ class GenreViewSet(viewsets.ReadOnlyModelViewSet):
     serializer_class = MovieSerializer
 
     def get_queryset(self):
-        genre_name = self.kwargs['genre_name']
+        genre_name = self.kwargs['genre_name'].replace('-', ' ')
         return Movie.objects.filter(genre__icontains=genre_name)
 
 
@@ -45,7 +45,7 @@ class CountryViewSet(viewsets.ReadOnlyModelViewSet):
     serializer_class = MovieSerializer
 
     def get_queryset(self):
-        country_name = self.kwargs['country_name']
+        country_name = self.kwargs['country_name'].replace('-', ' ')
         return Movie.objects.filter(country__icontains=country_name)
 
 
@@ -53,7 +53,7 @@ class YearViewSet(viewsets.ReadOnlyModelViewSet):
     serializer_class = MovieSerializer
 
     def get_queryset(self):
-        year_number = self.kwargs['year_number']
+        year_number = self.kwargs['year_number'].replace('-', ' ')
         return Movie.objects.filter(date_released__year=year_number)
 
 
