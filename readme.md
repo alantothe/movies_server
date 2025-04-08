@@ -17,22 +17,22 @@ This Django project serves as a backend for managing and serving movie stills.
 These endpoints return lists of unique values for the specified field:
 | Endpoint | Method | Description |
 |--------------|--------|---------------------------------|
-| `/directors` | GET | List all unique directors |
-| `/titles` | GET | List all unique movie titles |
-| `/genres` | GET | List all unique genres |
-| `/countries` | GET | List all unique countries |
-| `/years` | GET | List all unique years |
-| `/imdb` | GET | List all unique IMDb IDs |
+| `/only/directors` | GET | List all unique directors |
+| `/only/titles` | GET | List all unique movie titles |
+| `/only/genres` | GET | List all unique genres |
+| `/only/countries` | GET | List all unique countries |
+| `/only/years` | GET | List all unique years |
+| `/only/imdb` | GET | List all unique IMDb IDs |
 
 ## Filtered Movie Lists
 The following endpoints return movies filtered by the specified parameter:
 | Endpoint | Method | Description |
 |---------------------------|--------|--------------------------------------------|
-| `/titles/<title_name>/` | GET | List movies with the specified title |
-| `/directors/<director_name>/` | GET | List movies by the specified director |
-| `/genres/<genre_name>/` | GET | List movies in the specified genre |
-| `/countries/<country_name>/` | GET | List movies from the specified country |
-| `/years/<year_number>/` | GET | List movies released in the specified year |
+| `/titles/<title-name>/` | GET | List movies with the specified title |
+| `/directors/<director-name>/` | GET | List movies by the specified director |
+| `/genres/<genre-name>/` | GET | List movies in the specified genre |
+| `/countries/<country-name>/` | GET | List movies from the specified country |
+| `/years/<year-number>/` | GET | List movies released in the specified year |
 
 ## Setup
 
