@@ -37,7 +37,7 @@ class GenreViewSet(viewsets.ReadOnlyModelViewSet):
     serializer_class = MovieSerializer
 
     def get_queryset(self):
-        genre_name = self.kwargs['genre_name'].replace('-', ' ')
+        genre_name = self.kwargs['genre_name']
         return Movie.objects.filter(genre__icontains=genre_name)
 
 
