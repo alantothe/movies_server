@@ -36,34 +36,82 @@ The following endpoints return movies filtered by the specified parameter:
 
 ## Setup
 
-1. Clone the repository:
-   ```
-   git clone https://github.com/alantothe/movies_server.git
-   cd movie_stills
-   ```
+## Prerequisites 
+Ensure these tools are installed:
 
-2. Create a virtual environment:
-   ```
-   python3 -m venv movie_stills_env
-   ```
+- Python 3
+- PostgresSQL
 
-3. Activate the virtual environment:
-   ```
-   source movie_stills_env/bin/activate  # On Unix or MacOS
-   # movie_stills_env\Scripts\activate.bat  # On Windows
-   ```
+ ## Step 1: Clone the Project
+```bash
+git clone https://github.com/your-username/movies_server.git
+cd movies_server
+```
+—
+ ## Step 2: Create and Activate a Virtual Environment
+```bash
+python3 -m venv movie_stills_env
+source movie_stills_env/bin/activate
+```
+—
+ ## Step 3: Install Python Dependencies
+```bash
+pip install -r requirements.txt
+This installs Django and any other required libraries defined in requirements.txt.
+```
+—
+ ## Step 4: Create PostgreSQL Database and User
 
-4. Install dependencies:
-   ```
-   pip install -r requirements.txt
-   ```
+Start the PostgreSQL shell:
+```bash
+psql -U your_postgres_user
+```
+Then run the following commands inside the psql shell:
 
-5. Apply migrations:
-   ```
-   python3 manage.py migrate
-   ```
+```sql
+CREATE DATABASE mise_en_scene;
+CREATE USER mise_en_scene_admin WITH PASSWORD 'yourpassword';
+GRANT ALL PRIVILEGES ON DATABASE mise_en_scene TO mise_en_scene_admin;
+\q
+```
+—
+## Step 5: Configure Django to Use the Database
 
-6. Run the development server:
-   ```
-   python3 manage.py runserver
-   ```
+Open movies_server/settings.py, and edit the DATABASES section:
+
+``` python
+DATABASES = {
+    'default': {
+        'ENGINE': 'django.db.backends.postgresql',
+        'NAME': 'mise_en_scene',
+        'USER': 'mise_en_scene_admin',
+        'PASSWORD': 'yourpassword',
+        'HOST': 'localhost',
+        'PORT': '5432',
+    }
+}
+```
+—
+## Step 6: Create the Database Tables (Run Migrations)
+
+```python
+python manage.py makemigrations
+python manage.py migrate
+```
+
+—-
+## Step 7: Seed the Database With Initial Data
+
+```bash
+python manage.py seed json/master.json
+```
+
+## Step 8: Run the Server
+ If connecting to a movie_stills client app - https://github.com/alantothe/movie_stills
+```bash
+ python3 manage.py runserver 8081 
+```
+Otherwise 
+```bash
+  python3 manage.py runserver
+```
